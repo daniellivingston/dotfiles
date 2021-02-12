@@ -1,0 +1,6 @@
+alias azure='ssh -i /Users/livingston/.ssh/azureuser azureuser@20.51.238.18'
+alias sublime='open -a "Sublime Text"'
+alias lt='ls -alt'
+alias l='ls'
+alias ..='cd ..'
+alias vscode='open -a "Visual Studio Code"'
