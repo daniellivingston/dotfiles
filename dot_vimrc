@@ -1,0 +1,9 @@
+call plug#begin('~/.vim/plugged')
+" https://github.com/junegunn/vim-plug
+" Run ':PlugInstall' to update
+Plug 'alker0/chezmoi.vim'
+call plug#end()
+
+filetype plugin indent on
+syntax enable
+
