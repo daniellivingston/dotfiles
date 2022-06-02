@@ -9,15 +9,22 @@ export PATH="$HOME/.local/bin:${PATH}"
 {{ if eq .chezmoi.os "darwin" -}}
 # macOS .bashrc contents
 
-{{ else if eq .chezmoi.os "linux" -}}
+{{ else if eq .chezmoi.os "linux" }}
 # Linux .bashrc contents
-alias pbcopy='xclip -sel clip'
-alias pbpaste='xclip -o'
 
-{{ else if eq .chezmoi.os "windows" -}}
-# Windows .bashrc contents
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+## WSL-specific code
 function pbcopy { "$1" | clip.exe; }
 function pbpaste { powershell.exe -command "Get-Clipboard"; }
+
+{{   else }}
+## Non-WSL specific code
+alias pbcopy='xclip -sel clip'
+alias pbpaste='xclip -o'
+{{   end }}
+
+{{ else if eq .chezmoi.os "windows" -}}
+# Windows; no WSL; i.e. MinGW
 
 {{ end -}}
 
