@@ -4,6 +4,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'alker0/chezmoi.vim'
 call plug#end()
 
+" Runs `chezmoi apply` whenever a dotfile is saved
+autocmd BufWritePost ~/.local/share/chezmoi* ! chezmoi apply --source-path "%"
+
 filetype plugin indent on
 syntax enable
 
