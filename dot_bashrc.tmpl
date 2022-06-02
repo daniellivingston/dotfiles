@@ -1,0 +1,23 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+export PATH="$HOME/.local/bin:${PATH}"
+
+{{ if eq .chezmoi.os "darwin" -}}
+# macOS .bashrc contents
+
+{{ else if eq .chezmoi.os "linux" -}}
+# Linux .bashrc contents
+alias pbcopy='xclip -sel clip'
+alias pbpaste='xclip -o'
+
+{{ else if eq .chezmoi.os "windows" -}}
+# Windows .bashrc contents
+function pbcopy { "$1" | clip.exe; }
+function pbpaste { powershell.exe -command "Get-Clipboard"; }
+
+{{ end -}}
+
