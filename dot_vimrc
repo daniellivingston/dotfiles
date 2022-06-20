@@ -8,7 +8,12 @@ call plug#end()
 autocmd BufWritePost ~/.local/share/chezmoi* ! chezmoi apply --source-path "%"
 
 filetype plugin indent on
+
+" Highlighting syntax
 syntax enable
+
+" Line numbers
+set number
 
 " Use the F4 key to switch between C source and header files
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
