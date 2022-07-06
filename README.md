@@ -64,3 +64,11 @@ $ chezmoi merge $FILE
 # pull and apply the latest changes
 $ chezmoi update -v
 ```
+
+----------------
+
+## New Machine Setup
+
+### Windows
+
+- Follow the instructions to [Unix-ify Windows](https://kittywhiskers.eu/zsh-and-unix-style-native-system-on-windows/).

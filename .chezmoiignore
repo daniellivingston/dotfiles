@@ -5,3 +5,17 @@ README.md
 .work # only manage .work on work-laptop
 {{- end }}
 
+# Windows-exclusive files
+{{- if ne .chezmoi.os "windows" }}
+AppData/ # App-specific config files
+{{- end }}
+
+# macOS-exclusive files
+{{- if ne .chezmoi.os "macos" }}
+# ... #
+{{- end }}
+
+# Linux-exclusive files
+{{- if ne .chezmoi.os "linux" }}
+# ... #
+{{- end }}
