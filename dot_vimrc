@@ -9,17 +9,63 @@ autocmd BufWritePost ~/.local/share/chezmoi* ! chezmoi apply --source-path "%"
 
 filetype plugin indent on
 
-" Highlighting syntax
-syntax enable
+" ~~~~~~~ Basic Configuration ~~~~~~~ "
+set nocompatible        " disable vi backcompat
+set nobackup            " do not save backup files
+set encoding=utf-8      " set encoding to UTF-8 (default was "latin1")
+set ff=unix             " force unix-style line endings ('\n')
+set backspace=indent,eol,start " Allow backspacing over autoindent, line breaks and start of insert action
+set laststatus=2        " always show statusline (even with only single window)
+set visualbell          " blink cursor on error, instead of beeping
+set showcmd             " show partial commands in the last line of the screen
+set wildmenu            " better command-line completion
+set wildmode=list:longest " make wildmenu behave similar to Bash completion
+set wildignore=*.jpg,*.png,*.gif,*.docx,*.png,*.xlsx
 
-" Line numbers
-set number
-
-" Split horizontal instead of vertical by default
-set splitright
-
-" Use the F4 key to switch between C source and header files
+" ~~~~~ Keybindings / Navigation ~~~~~ "
+if has('mouse')
+  set mouse=a           " enable mouse support
+endif
+set splitright          " create split panes to the right
+" ----------------------  move vertically by visual line
+nmap j gj
+nmap k gk
+" ---------------------- switch between source / header files with F4 key
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
-" Enable mouse support
-set mouse=a
+" ~~~~~~~~~~~~~~ Editing ~~~~~~~~~~~~~ "
+set number              " show line numbers
+set ruler               " show line and column number of the cursor on right side of statusline
+set wrap                " wrap lines
+" ----------------------- indentation
+set autoindent          " copy indent from current line when starting a new line
+set smartindent         " even better autoindent (e.g. add indent after '{')
+" ----------------------- tabs
+set tabstop=4           " width that a <TAB> character displays as
+set expandtab           " use space characters instead of <TAB>
+set shiftwidth=4        " number of spaces to use for each step of (auto)indent
+set softtabstop=4       " backspace after pressing <TAB> will remove up to this many spaces
+
+" ~~~~~~~~~~~~ Appearance ~~~~~~~~~~~~ "
+" ----------------------- theme
+set t_Co=256            " recommended by PaperColor
+set background=dark     " 'dark mode' theme
+colorscheme PaperColor  " sources ~/.vim/colors/PaperColor.vim
+" ----------------------- ui rendering configuration
+set lazyredraw          " redraw screen only when we need to
+set cursorline          " highlight line under cursor
+set cursorcolumn        " highlight column under cursor
+" ----------------------- filetype-based configuration
+filetype on             " enable file type detection
+filetype plugin on      " enable file type syntax extensions
+filetype indent on      " load an indent file for detected file type
+syntax on               " enable syntax highlighting
+
+" ~~~~~~~~~~~~~~ Search ~~~~~~~~~~~~~~ "
+set incsearch           " enable incremental search (highlight matching chars)
+set ignorecase          " ignore case during search
+set smartcase           " use smart case during search
+set showmatch           " show matching words during search
+set hlsearch            " use highlighting when searching
+set showmatch           " highlight matching parentheses / brackets [{()}]
+

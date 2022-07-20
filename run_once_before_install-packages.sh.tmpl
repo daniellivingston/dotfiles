@@ -1,7 +1,25 @@
 {{ if eq .chezmoi.os "linux" -}}
-#!/bin/sh
-sudo apt install ripgrep
+#!/usr/bin/env sh
+
+set -ex
+
+sudo apt install -y \
+    build-essential \
+    cmake \
+    ninja-build \
+    gcc \
+    gfortran \
+    python3 \
+    ripgrep \
+    fzf \
+    fd-find
+
 {{ else if eq .chezmoi.os "darwin" -}}
-#!/bin/sh
-brew install ripgrep
+#!/usr/bin/env sh
+
+brew install \
+    ripgrep \
+    fzf \
+    fd
+
 {{ end -}}
