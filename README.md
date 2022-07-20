@@ -1,32 +1,38 @@
 # Dotfiles
 
-## Chezmoi
+Dotfiles in this repo are managed and applied with [Chezmoi](https://www.chezmoi.io).
 
-| Title | URL |
-|-------|-----|
-| Quick Start | <https://www.chezmoi.io/quick-start/> |
-| Installation | <https://www.chezmoi.io/install/> |
-| User Guide | <https://www.chezmoi.io/user-guide/command-overview/> |
+## Chezmoi Installation
 
-### Installation
+To download Chezmoi and automatically apply updates, run:
 
 ```sh
-$ brew install chezmoi
-$ chezmoi 
+$ sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply daniellivingston
 ```
 
-### First Steps
+## Usage
+
+Below are a list of common workflow commands.
+For an exhaustive list, consult [the user guide](https://www.chezmoi.io/user-guide/command-overview/).
+
+### Add a file
 
 ```sh
-# Init from repo
-$ chezmoi init https://github.com/daniellivingston/dotfiles-chezmoi.git
-
-# Compare local v. remote dotfiles
-$ chezmoi diff
-
-# If ok, overwrite local dotfiles
-$ chezmoi apply -v
+$ chezmoi add $FILE
 ```
+
+### Editing a file
+
+```sh
+$ chezmoi edit $FILE
+```
+
+### Pull and apply changes
+
+```sh
+$ chezmoi update -v
+```
+
 
 ### Commands
 
@@ -65,10 +71,3 @@ $ chezmoi merge $FILE
 $ chezmoi update -v
 ```
 
-----------------
-
-## New Machine Setup
-
-### Windows
-
-- Follow the instructions to [Unix-ify Windows](https://kittywhiskers.eu/zsh-and-unix-style-native-system-on-windows/).
