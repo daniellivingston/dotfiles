@@ -1,3 +1,6 @@
+# Config directory with user Zsh scripts
+local CONFIG_ZSH="$HOME/.config/zsh"
+
 # Add .local to PATH
 export PATH="$HOME/.local/bin:${PATH}"
 
@@ -68,7 +71,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Load custom keybindings
-source ~/.zsh/bindkey.zsh
+source $CONFIG_ZSH/bindkey.zsh
 
 # Stop the annoying [naey] zsh autocorrect
 unsetopt correct
