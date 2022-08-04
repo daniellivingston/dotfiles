@@ -1,20 +1,13 @@
 # ==========================
 # Custom Keybindings for Zsh
 # ==========================
-# HELP
-# ----
-#   - `showkey -a` : Get escape codes from arbitrary key combinations
-#   - `zle -al`    : Display all available widgets
-#   - `zle -N <func>` : register a new widget
-#   - `bindkey [opts] <keycode> <widget>` : bind the keyboard combination
-#       <keycode> to the widget <widget>
 #
-# https://sgeb.io/posts/zsh-zle-custom-widgets/
+# Find the keycode with: showkey -a
+#
+#   ctrl + \ : execute line in PowerShell
+#
 
-# ---------------------------------------- #
-# Ctrl+\ : execute line in PowerShell
-# ---------------------------------------- #
-
+# ctrl+\: execute current line in PowerShell
 _exec-in-powershell() {
   local pwsh='powershell.exe -NoProfile -Command'
   local stashBuffer="$BUFFER"
@@ -23,8 +16,6 @@ _exec-in-powershell() {
   zle -U "$pwsh '$stashBuffer'"
   zle accept-line
 }
-
 zle -N _exec-in-powershell
 bindkey '^\' _exec-in-powershell
-# ---------------------------------------- #
 
