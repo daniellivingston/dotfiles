@@ -99,6 +99,8 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 # fi
 # <<< conda initialize <<<
 
+# Local (to this machine) configuration
+# SHOULD BE LAST
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
