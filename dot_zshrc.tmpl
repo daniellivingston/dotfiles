@@ -1,8 +1,6 @@
-# Config directory with user Zsh scripts
-local CONFIG_ZSH="$HOME/.config/zsh"
-
 # Add .local to PATH
 export PATH="$HOME/.local/bin:${PATH}"
+export MANPATH="$HOME/.local/share/man:$MANPATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -45,9 +43,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
@@ -58,23 +53,10 @@ else
   export EDITOR='vim'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Load custom keybindings
+# Config directory with user Zsh scripts
+local CONFIG_ZSH="$HOME/.config/zsh"
+source $CONFIG_ZSH/config.zsh
 source $CONFIG_ZSH/bindkey.zsh
-
-# Stop the annoying [naey] zsh autocorrect
-unsetopt correct
 
 # set bat as a colorizing pager for man
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
