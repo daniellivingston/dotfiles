@@ -60,6 +60,9 @@ local CONFIG_ZSH="$HOME/.config/zsh"
 source $CONFIG_ZSH/config.zsh
 source $CONFIG_ZSH/bindkey.zsh
 
+alias l='ls -lah'
+alias lt='ls -alt'
+
 # set bat as a colorizing pager for man
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 # man 2 select
