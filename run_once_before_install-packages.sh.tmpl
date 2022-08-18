@@ -5,11 +5,13 @@ set -ex
 
 sudo apt install -y \
     build-essential \
+    ca-certificates \
     cmake \
     ninja-build \
     gcc \
     gfortran \
     python3 \
+    wget \
     ripgrep \
     fzf \
     fd-find
@@ -22,4 +24,6 @@ brew install \
     fzf \
     fd
 
+{{ else if eq .chezmoi.os "windows" -}}
+winget install --id Git.Git -e --source winget
 {{ end -}}
